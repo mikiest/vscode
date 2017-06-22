@@ -427,7 +427,7 @@ export function createApiFactory(
 			getConfiguration: (section?: string): vscode.WorkspaceConfiguration => {
 				return extHostConfiguration.getConfiguration(section);
 			},
-			registerTaskProvider: proposedApiFunction(extension, (provider: vscode.TaskProvider) => {
+			registerTaskProvider: proposedApiFunction(extension, (type: string, provider: vscode.TaskProvider) => {
 				return extHostTask.registerTaskProvider(extension, provider);
 			})
 		};
@@ -504,8 +504,9 @@ export function createApiFactory(
 			TaskRevealKind: extHostTypes.TaskRevealKind,
 			TaskPanelKind: extHostTypes.TaskPanelKind,
 			TaskGroup: extHostTypes.TaskGroup,
-			ShellTask: extHostTypes.ShellTask,
-			ProcessTask: extHostTypes.ProcessTask
+			ProcessExecution: extHostTypes.ProcessExecution,
+			ShellExecution: extHostTypes.ShellExecution,
+			Task: extHostTypes.Task
 		};
 	};
 }
